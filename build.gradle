@@ -1,0 +1,45 @@
+plugins {
+    id 'groovy'
+}
+
+group 'geb-test-project'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    gebVersion = "2.2"
+    seleniumVersion = "3.12.0"
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.4.15"
+
+    // https://mvnrepository.com/artifact/org.gebish/geb-gradle
+    compile group: 'org.gebish', name: 'geb-gradle', version: '2.2'
+
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:${gebVersion}"
+    testCompile "org.spockframework:spock-core:1.1-groovy-2.4"
+
+    // Need a driver implementation
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:${seleniumVersion}"
+    testRuntime "org.seleniumhq.selenium:selenium-support:${seleniumVersion}"
+
+    // Faker for creating random test data
+    testCompile group: 'com.github.javafaker', name: 'javafaker', version: '0.16'
+
+    // Spock reports
+    testCompile( 'com.athaydes:spock-reports:1.6.1' ) {
+        transitive = false // this avoids affecting your version of Groovy/Spock
+    }
+    // if you don't already have slf4j-api and an implementation of it in the classpath, add this!
+    testCompile 'org.slf4j:slf4j-api:1.7.13'
+    testCompile 'org.slf4j:slf4j-simple:1.7.13'
+}
+
+test {
+    systemProperties "geb.build.reportsDir": "target/geb-reports"
+}
