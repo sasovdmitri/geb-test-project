@@ -21,6 +21,3 @@ gradle-app.setting
 
 # Out folder
 /out/
-
-# gradle folder
-/gradle/
