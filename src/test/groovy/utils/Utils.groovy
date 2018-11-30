@@ -2,9 +2,8 @@ package utils
 
 import com.github.javafaker.service.FakeValuesService
 import com.github.javafaker.service.RandomService
-import geb.Browser
 
-class Utils extends Browser {
+class Utils {
 
     Map generateCredentials () {
         FakeValuesService fakeValuesService = new FakeValuesService(

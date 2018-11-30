@@ -1,5 +1,15 @@
-plugins {
-    id 'groovy'
+import geb.gradle.saucelabs.SauceAccount
+
+apply plugin: "geb-saucelabs"
+apply plugin: "groovy"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.gebish:geb-gradle:2.2'
+    }
 }
 
 group 'geb-test-project'
@@ -7,6 +17,7 @@ version '1.0'
 
 repositories {
     mavenCentral()
+    maven { url "http://repository-saucelabs.forge.cloudbees.com/release" }
 }
 
 ext {
@@ -38,8 +49,27 @@ dependencies {
     // if you don't already have slf4j-api and an implementation of it in the classpath, add this!
     testCompile 'org.slf4j:slf4j-api:1.7.13'
     testCompile 'org.slf4j:slf4j-simple:1.7.13'
+
+    sauceConnect "com.saucelabs:ci-sauce:1.140"
 }
 
 test {
     systemProperties "geb.build.reportsDir": "target/geb-reports"
+}
+
+sauceLabs {
+
+    browsers {
+        chrome_mac_latest {
+            capabilities (
+                "screenResolution" : "1280x720"
+            )
+        }
+    }
+    account {
+        username = System.getenv(SauceAccount.USER_ENV_VAR)
+        accessKey = System.getenv(SauceAccount.ACCESS_KEY_ENV_VAR)
+    }
+
+    useTunnel = false
 }

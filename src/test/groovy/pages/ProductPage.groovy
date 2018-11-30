@@ -1,6 +1,7 @@
 package pages
 
 import geb.Page
+import modules.MessageModule
 import modules.ProductModule
 
 class ProductPage extends Page {
@@ -8,6 +9,6 @@ class ProductPage extends Page {
 
     static content = {
         productModule {module ProductModule}
+        messageModule {module MessageModule}
     }
-
 }

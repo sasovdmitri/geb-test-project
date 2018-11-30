@@ -2,6 +2,7 @@ package pages
 
 import com.github.javafaker.Faker
 import geb.Page
+import modules.MessageModule
 
 class RegisterPage extends Page {
     static at = {title == "Register | Account | ghd ® Official Website"}
@@ -21,6 +22,8 @@ class RegisterPage extends Page {
         subscribeCheckbox {$("#subscribeMe")}
         registerBtn {$("input[value=\"Register\"]")}
         alreadyRegisteredError {$("#uid\\.errors").text() == "The user already exists with this email"}
+
+        messageModule {module MessageModule}
     }
 
     void register(email, password) {
@@ -32,6 +35,9 @@ class RegisterPage extends Page {
         maleRadiobtn = true
         passwordInput = password
         passwordConfirmInput = password
+        if (messageModule.footerMessage.displayed) {
+            messageModule.footerCloseBtn.click()
+        }
         daySelect = "01"
         monthSelect = "01"
         yearSelect = "2000"

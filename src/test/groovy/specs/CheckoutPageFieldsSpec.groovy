@@ -16,6 +16,7 @@ class CheckoutPageFieldsSpec extends GebReportingSpec {
         homePage.headerModule.straightenersCategory.click()
 
         ProductPage productPage = at ProductPage
+        productPage.messageModule.footerCloseBtn.click()
         productPage.productModule.addToBasketBtn[0].click()
 
         CartPage cartPage = at CartPage

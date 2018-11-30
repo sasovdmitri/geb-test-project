@@ -17,10 +17,10 @@ gradle-app.setting
 .idea
 
 # Target folder for reports
-target
+/target/
 
 # Out folder
-out
+/out/
 
 # gradle folder
-gradle
+/gradle/
