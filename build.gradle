@@ -67,8 +67,8 @@ sauceLabs {
         }
     }
     account {
-        username = System.getenv(SauceAccount.USER_ENV_VAR)
-        accessKey = System.getenv(SauceAccount.ACCESS_KEY_ENV_VAR)
+        username = System.getenv("SAUCE_USERNAME")
+        accessKey = System.getenv("SAUCE_ACCESS_KEY")
     }
 
     useTunnel = false
