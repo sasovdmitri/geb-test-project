@@ -5,7 +5,7 @@ import modules.HeaderModule
 import modules.ProductModule
 
 class SearchResultsPage extends Page {
-    static url = "search"
+    static url = "/search"
 
     static at = {title == "Search ghdhair.com | ghd ® Official Website"}
 

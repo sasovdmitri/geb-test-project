@@ -8,9 +8,9 @@ import pages.ProductPage
 
 class CheckoutPageFieldsSpec extends GebReportingSpec {
 
-    def "All required payments fields are present on the Checkout page"() {
+    def "All required payment fields are present on the Checkout page"() {
 
-        given: "user add product to cart and reaches Checkout page"
+        given: "User adds product to cart and reaches Checkout page"
 
         HomePage homePage = to HomePage
         homePage.headerModule.straightenersCategory.click()
@@ -22,12 +22,12 @@ class CheckoutPageFieldsSpec extends GebReportingSpec {
         CartPage cartPage = at CartPage
         cartPage.checkoutBtn.click()
 
-        when: "opening Payment Details on Checkout page"
+        when: "Opening Payment Details on Checkout page"
 
         CheckoutPage checkoutPage = at CheckoutPage
         checkoutPage.paymentCheckbox = false
 
-        then: "all the required payment fields are present"
+        then: "All the required payment fields are present"
 
         checkoutPage.requiredPaymentFields.forEach{
             it.displayed

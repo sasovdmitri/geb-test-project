@@ -12,6 +12,9 @@ class LoginSpec extends GebReportingSpec {
         given: "User creates new Consumer account"
 
         HomePage homePage = to HomePage
+
+        when: "User registers a new Consumer account"
+
         homePage.headerModule.loginBtn.click()
 
         LoginPage loginPage = at LoginPage
@@ -23,7 +26,7 @@ class LoginSpec extends GebReportingSpec {
         RegisterPage registerPage = at RegisterPage
         registerPage.register(credentials['email'], credentials['password'])
 
-        when: "User tries to log in"
+        and: "User tries to log in"
 
         loginPage.loginProcess(credentials['email'], credentials['password'])
 

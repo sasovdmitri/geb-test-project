@@ -1,7 +1,7 @@
 import geb.driver.SauceLabsDriverFactory
 import org.openqa.selenium.firefox.FirefoxDriver
 
-baseUrl = "http://ghdhair.com/"
+baseUrl = "http://ghdhair.com"
 
 reportsDir = "target/geb-reports"
 reportOnTestFailureOnly = true

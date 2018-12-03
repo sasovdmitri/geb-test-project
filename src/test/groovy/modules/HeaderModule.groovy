@@ -1,6 +1,5 @@
 package modules
 
-import geb.Browser
 import geb.Module
 import pages.LoginPage
 import pages.ProductPage
